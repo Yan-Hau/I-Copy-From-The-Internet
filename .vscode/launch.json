@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/userprog/nachos",
-            "args": [],
+            "args": ["-e", "${workspaceFolder}/test/sleep"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

@@ -10,7 +10,9 @@
   - [使用原生的 Linux](#使用原生的-linux)
   - [使用 Windows WSL](#使用-windows-wsl)
   - [使用 Virtual Machine (Virtual Box, VMWare, Hyper-V等)](#使用-virtual-machine-virtual-box-vmware-hyper-v等)
-- [實作](#實作)
+- [實作 Sleep](#實作-sleep)
+  - [執行結果](#執行結果)
+  - [Run Nachos use GDB](#run-nachos-use-gdb)
 
 # 前言
 本開發環境基於 NTUST - Nachos4.0 , 以及 [我自己](https://github.com/Yan-Hau/I-dont-Copy-From-The-Internet) , 重新針對 64bit 環境Patch：
@@ -137,8 +139,50 @@ $ ./install.sh
   點擊右下角的 `><` 標誌, 連線到你的 Linux Server 上
    ![Remote](image/REMOTE.png)
 
-# 實作
+# 實作 Sleep
 
 首先證明, 和助教的版本是一樣的
+
 ![Run](image/RUN1.png)
 
+<div style="font-size:3em">然後到網路上, 大膽抄Code</div>
+
+/threads/alarm
+![Alarm](image/Alarm.png)
+
+/userprog/syscall
+![syscall](image/syscall.png)
+
+## 執行結果
+![Result](image/Result.png)
+
+## Run Nachos use GDB
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/userprog/nachos",
+            "args": ["-e", "${workspaceFolder}/test/sleep"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "enable gdb beautiful display",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
+```
+成功抓到System Call 中斷點
+![GDB](image/GDB.png)
