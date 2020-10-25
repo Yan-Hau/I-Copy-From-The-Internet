@@ -158,6 +158,7 @@ $ ./install.sh
 
 ## Run Nachos use GDB
 
+./.vscode/launch.json
 ```json
 {
     "version": "0.2.0",
