@@ -42,3 +42,5 @@ nachos
 npm-*
 makedep
 # End of https://www.toptal.com/developers/gitignore/api/c++
+filesys/Makefile
+test/Makefile
